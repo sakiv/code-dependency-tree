@@ -17,11 +17,12 @@ def print_graph(graph: object, roots: set):
     for root in roots:
         level = {root: 0}
         print('* {}'.format(root))
-        for dep, item in nx.dfs_edges(graph, root):
-            level[item] = level[dep] + 1
-            print('  {delimiter}|- {name}'.format(
-                                        delimiter='|  ' * level[dep],
-                                        name=item))
+        if root in nx.dfs_tree(graph, root):
+            for dep, item in nx.dfs_edges(graph, root):
+                level[item] = level[dep] + 1
+                print('  {delimiter}|- {name}'.format(
+                                            delimiter='|  ' * level[dep],
+                                            name=item))
         print('')
     
     print('')

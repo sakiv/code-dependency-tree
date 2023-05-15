@@ -5,3 +5,4 @@ typer
 asyncio
 aiohttp
 requests
+networkx

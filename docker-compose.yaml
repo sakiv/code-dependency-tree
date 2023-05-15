@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: devcontainer-python:latest
+    ports:
+      - 9922:22
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+    environment:
+      DEV: true
+    env_file: local.env    

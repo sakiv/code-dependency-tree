@@ -1,0 +1,7 @@
+pytest
+pytest-mock
+postgres
+typer
+asyncio
+aiohttp
+requests

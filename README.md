@@ -32,49 +32,15 @@ An utility to generate dependency graph for your code.
 
 ### Usage:
 
-- If you are starting fresh, clone git repository
+- Clone git repository
     ```
-    git clone https://github.com/sakiv/devcontainer-python.git
-    ```
-
-- If you already have a python code, then go to your python project directory and pull this repository
-    ```
-    git pull https://github.com/sakiv/devcontainer-python.git
+    git clone https://github.com/sakiv/dep-graph-generator.git
     ```
 
-- Add necessary environment variables in local.env
-    ```
-    POSTGRESS_UID=********
-    POSTGRESS_PWD=********
-    ```
-
-- Add or remove any additional python libraries in requirements.txt, defaults are
-    ```
-    pytest
-    pytest-mock
-    postgres
-    typer
-    asyncio
-    aiohttp
-    requests
-    ```
-
-- Build docker image
-    ```
-    docker compose build
-    ```
-
-- Build docker image and spin off a new container
+- Start docker container
     ```
     docker compose up
     ```
-
-- Create new container from existing image and workspace from host machine directory
-    ```
-    docker run -dit --env-file local.env --mount type=bind,source="$(pwd)",target=/workspace --name="$(basename $PWD)" devcontainer-python:latest
-    ```
-
-** *Note: I recommend using VS Code Docker extension to manage docker images and containers. But if you are using another IDE and need to use Docker CLI then refer to (Docker CLI documentation)[https://docs.docker.com/engine/reference/commandline/cli/]*
 
 ## VS Code Instructions
 

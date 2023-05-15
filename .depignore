@@ -1,0 +1,3 @@
+.depignore
+.git
+__pycache__

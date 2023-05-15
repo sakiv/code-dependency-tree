@@ -1,5 +1,14 @@
+import sys
+import re
+
 # 3rd party modules
 import networkx as nx
+
+def validate_regex(regex: str, escape: bool = False):
+    try:
+        return re.compile(re.escape(regex), re.IGNORECASE) if escape else re.compile(regex, re.IGNORECASE)        
+    except re.error:
+        sys.exit('Err: Invalid regex - [{}]'.format(regex))
 
 def print_tree(tree: object, level: int = 0):
     for item in tree:
@@ -7,23 +16,13 @@ def print_tree(tree: object, level: int = 0):
         if isinstance(tree[item], dict):
             print_tree(tree[item], level+1)
 
-def print_graph(graph: object, roots: set):
-    print('')
-    print('-----------------')
-    print('Dependency graph:')
-    print('-----------------')
-    print('')
-
-    for root in roots:
-        level = {root: 0}
-        print('* {}'.format(root))
-        if root in nx.dfs_tree(graph, root):
-            for dep, item in nx.dfs_edges(graph, root):
-                level[item] = level[dep] + 1
-                print('  {delimiter}|- {name}'.format(
-                                            delimiter='|  ' * level[dep],
-                                            name=item))
-        print('')
-    
-    print('')
-    
+def get_file_contents(filePath: str):
+    with open(filePath, 'r') as f:
+        try:
+            fileContent = f.read()
+        except UnicodeDecodeError:
+            global __debugEnabled
+            __debugEnabled and print('Err: UnicodeDecodeError - {}'.format(filePath))
+            fileContent = ''
+        f.close()
+        return fileContent

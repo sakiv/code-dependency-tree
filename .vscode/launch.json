@@ -11,8 +11,10 @@
             "program": "app.py",
             "console": "integratedTerminal",
             "args": [
+                "tree",
                 "./sample-data/ksh",
-                "ksh"
+                "ksh",
+                "True"
             ],
             "justMyCode": true
         }

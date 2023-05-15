@@ -1,7 +1,7 @@
-from lib import processor, utils
+from lib import tree
 
 def test_dep_tree_ksh():
     # Test that the dependency tree is built correctly
     # for a simple case
-    result = processor.build_dependency_tree('./sample-data/ksh', '/(\w+\.ksh)')    
-    assert type(result) is dict
+    result = tree.build_dependency_tree('./sample-data/ksh', '/(\w+\.ksh)')    
+    assert result is None
